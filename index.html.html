@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pooja Jain — Design Manager | Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#07090F;--ink2:#0C0F1A;--ink3:#101525;
+  --cream:#F0EAE0;--gold:#C9A84C;--gold2:#E5C96A;--gold3:rgba(201,168,76,0.12);
+  --muted:rgba(240,234,224,0.52);--dim:rgba(240,234,224,0.26);--vdim:rgba(240,234,224,0.12);
+  --line:rgba(201,168,76,0.18);--serif:'Cormorant Garamond',serif;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+/* STICKY HIRE BTN */
+.sticky-cta{position:fixed;bottom:2rem;right:2rem;z-index:200;background:var(--gold);color:var(--ink);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.7rem 1.5rem;border-radius:2px;text-decoration:none;display:flex;align-items:center;gap:.5rem;box-shadow:0 4px 24px rgba(201,168,76,.35);transition:all .3s}
+.sticky-cta:hover{background:var(--gold2);transform:translateY(-2px)}
+.sticky-cta::before{content:'';width:7px;height:7px;background:var(--ink);border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.9rem 5vw;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(24px);background:rgba(7,9,15,0.88);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:.04em}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav a{text-decoration:none;color:var(--muted);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;transition:color .3s}
+nav a:hover{color:var(--gold)}
+.nav-avail{display:flex;align-items:center;gap:.5rem;font-size:.65rem;color:var(--muted)}
+.avail-dot{width:7px;height:7px;background:#4CAF88;border-radius:50%;flex-shrink:0;animation:pulse 2s infinite}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 9vw;position:relative;overflow:hidden}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 85% 40%,rgba(201,168,76,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 15% 70%,rgba(13,43,78,.4) 0%,transparent 60%);pointer-events:none}
+.hero-vline{position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent 0%,var(--gold) 40%,transparent 100%);opacity:.3}
+.htag{font-size:.65rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.8rem;margin-bottom:1.8rem}
+.htag::before{content:'';width:40px;height:1px;background:var(--gold)}
+h1.hero-name{font-family:var(--serif);font-size:clamp(5rem,11vw,10rem);font-weight:300;line-height:.9;letter-spacing:-.015em;margin-bottom:.25em}
+h1.hero-name em{color:var(--gold);font-style:italic}
+.hero-role{font-size:clamp(.85rem,1.5vw,1.05rem);color:var(--muted);font-weight:300;letter-spacing:.08em;margin-bottom:1.8rem}
+.hero-firms{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.5rem;padding:.9rem 1.2rem;border:1px solid var(--line);border-radius:2px;width:fit-content;background:rgba(201,168,76,.04)}
+.hf-label{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.hf-sep{width:1px;height:14px;background:var(--line)}
+.hf-name{font-size:.72rem;color:var(--muted);white-space:nowrap}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--ink);padding:.82rem 2.2rem;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .3s}
+.btn-gold:hover{background:var(--gold2)}
+.btn-line{border:1px solid var(--dim);color:var(--muted);padding:.82rem 2.2rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .3s}
+.btn-line:hover{border-color:var(--cream);color:var(--cream)}
+.hero-nums{position:absolute;right:9vw;bottom:14vh;display:flex;flex-direction:column;gap:2rem;text-align:right}
+.hn-num{font-family:var(--serif);font-size:3.2rem;color:var(--gold);line-height:1}
+.hn-lbl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+
+/* SHARED SECTION */
+section{padding:7rem 9vw}
+.stag{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem}
+.stag::before{content:'';width:28px;height:1px;background:var(--gold)}
+.sh{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.1}
+.sh em{color:var(--gold);font-style:italic}
+
+/* ══ ABOUT ══════════════════════════════════════════════════════ */
+#about{border-top:1px solid var(--line);padding-bottom:5rem}
+.about-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:7vw;align-items:start;margin-top:3.5rem}
+.about-statement{font-family:var(--serif);font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;line-height:1.4;color:var(--cream);margin-bottom:1.8rem}
+.about-statement em{color:var(--gold);font-style:italic}
+.about-body p{color:var(--muted);font-size:.88rem;line-height:1.95;margin-bottom:.9rem}
+.about-body strong{color:var(--cream);font-weight:400}
+.about-avail{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(76,175,136,.3);background:rgba(76,175,136,.06);padding:.45rem 1rem;border-radius:2px;margin-top:1.2rem;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#4CAF88}
+.about-avail::before{content:'';width:6px;height:6px;background:#4CAF88;border-radius:50%}
+
+/* Right side of about */
+.about-right{display:flex;flex-direction:column;gap:2rem}
+/* Big metrics */
+.about-metrics{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.am{background:var(--ink2);padding:1.6rem;text-align:center;position:relative;overflow:hidden}
+.am::before{content:'';position:absolute;inset:0;background:var(--gold3);opacity:0;transition:opacity .3s}
+.am:hover::before{opacity:1}
+.am-n{font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1}
+.am-l{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:.25rem}
+/* 3 Pillars */
+.pillars{display:flex;flex-direction:column;gap:0}
+.pillar{padding:1.2rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:36px 1fr;gap:.9rem;align-items:start}
+.pillar:first-child{border-top:1px solid var(--line)}
+.p-icon{width:28px;height:28px;border:1px solid var(--gold);border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.9rem;color:var(--gold);flex-shrink:0}
+.p-title{font-size:.78rem;font-weight:500;color:var(--cream);margin-bottom:.2rem}
+.p-desc{font-size:.74rem;color:var(--muted);line-height:1.6}
+/* Awards strip */
+.awards-strip{display:flex;flex-direction:column;gap:.6rem}
+.award-badge{display:flex;align-items:center;gap:.7rem;padding:.65rem .9rem;background:var(--ink3);border:1px solid var(--line);border-radius:2px;transition:border-color .3s}
+.award-badge:hover{border-color:var(--gold)}
+.award-star{color:var(--gold);font-size:.8rem;flex-shrink:0}
+.award-text{font-size:.72rem;color:var(--muted)}.award-text strong{color:var(--cream);font-weight:400;display:block;font-size:.75rem}
+
+/* ══ WORK ═══════════════════════════════════════════════════════ */
+#work{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--ink) 0%,var(--ink2) 100%)}
+.work-intro{max-width:600px;color:var(--muted);font-size:.88rem;line-height:1.9;margin:.8rem 0}
+.filter-bar{display:flex;gap:.45rem;flex-wrap:wrap;margin:2rem 0 2.8rem}
+.fbtn{border:1px solid var(--line);color:var(--dim);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.38rem 1rem;border-radius:20px;background:none;cursor:pointer;transition:all .22s;font-family:var(--sans)}
+.fbtn:hover,.fbtn.active{border-color:var(--gold);color:var(--gold);background:var(--gold3)}
+.works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.wcard{background:var(--ink3);border:1px solid var(--line);border-radius:3px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.wcard:hover{transform:translateY(-5px);border-color:rgba(201,168,76,.45);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.wcard-preview{height:210px;position:relative;overflow:hidden;background:#08111E;flex-shrink:0}
+.wcard-body{padding:1.2rem 1.3rem}
+.wcat{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
+.wtitle{font-family:var(--serif);font-size:1.2rem;color:var(--cream);margin-bottom:.4rem;line-height:1.2}
+.wdesc{font-size:.77rem;color:var(--muted);line-height:1.7}
+
+/* ── PRINT MOCKUPS ────────────────────────────────────────────── */
+.m-report{width:100%;height:100%;background:#081422;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden}
+.m-report::before{content:'';position:absolute;top:-50px;right:-50px;width:210px;height:210px;border:1px solid rgba(201,168,76,.18);border-radius:50%}
+.m-report::after{content:'';position:absolute;top:-28px;right:-28px;width:140px;height:140px;border:1px solid rgba(201,168,76,.1);border-radius:50%}
+.r-yr{font-family:var(--serif);font-size:4.5rem;font-weight:300;color:rgba(201,168,76,.1);position:absolute;top:8px;right:12px;line-height:1}
+.r-bar{width:3px;height:50px;background:var(--gold);margin-bottom:10px}
+.r-tag{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.r-title{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:8px}
+.r-dots{display:flex;gap:14px}
+.r-dot-n{font-family:var(--serif);font-size:.95rem;color:var(--gold)}
+.r-dot-l{font-size:.44rem;letter-spacing:.07em;text-transform:uppercase;color:rgba(240,234,224,.35)}
+
+.m-bifold{width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#111}
+.bf-cover{background:linear-gradient(155deg,#0B2644 0%,#081830 100%);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+.bf-co-logo{display:flex;align-items:center;gap:5px}
+.bf-sq{width:8px;height:8px;background:var(--gold);flex-shrink:0}
+.bf-co-name{font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.bf-co-title{font-family:var(--serif);font-size:1.2rem;color:var(--cream);font-weight:300;line-height:1.2}
+.bf-co-rule{width:28px;height:1px;background:var(--gold);margin:.55rem 0}
+.bf-co-sub{font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.bf-co-stat{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);padding:7px;text-align:center;border-radius:2px}
+.bf-st-n{font-family:var(--serif);font-size:1.2rem;color:var(--gold)}
+.bf-st-l{font-size:.42rem;text-transform:uppercase;letter-spacing:.07em;color:var(--dim)}
+.bf-inside{background:#F7F5F1;padding:16px;display:flex;flex-direction:column;gap:8px}
+.bf-i-head{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:#0B2644;font-family:var(--sans);font-weight:500}
+.bf-i-rule{height:1px;background:rgba(11,38,68,.15)}
+.bf-i-cols{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:1}
+.bf-i-ct{font-size:.52rem;font-weight:500;color:#0B2644;font-family:var(--sans);margin-bottom:2px}
+.bf-i-cb{font-size:.45rem;color:#555;font-family:var(--sans);line-height:1.5}
+
+.m-2pager{width:100%;height:100%;background:#F9F7F4;display:flex;flex-direction:column;overflow:hidden}
+.tp-hdr{background:#0B2644;padding:11px 16px;display:flex;justify-content:space-between;align-items:center}
+.tp-hdr-t{font-family:var(--serif);font-size:.85rem;color:var(--cream);font-weight:300}
+.tp-hdr-s{font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.tp-content{padding:12px 16px;display:grid;grid-template-columns:1.3fr .9fr;gap:10px;flex:1}
+.tp-sec{font-size:.48rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#0B2644;font-family:var(--sans);border-bottom:1px solid #0B2644;padding-bottom:3px;margin-bottom:5px}
+.tp-text{font-size:.43rem;color:#555;line-height:1.55;font-family:var(--sans);margin-bottom:6px}
+.tp-sg{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.tp-sk{background:#0B2644;padding:5px;text-align:center}
+.tp-sn{font-family:var(--serif);font-size:.95rem;color:var(--gold)}
+.tp-sl{font-size:.38rem;color:rgba(240,234,224,.55);text-transform:uppercase;letter-spacing:.06em}
+.tp-side{background:#EEE9E0;padding:9px;border-radius:2px;margin-bottom:5px}
+.tp-sh{font-size:.46rem;font-weight:500;color:#0B2644;font-family:var(--sans);margin-bottom:3px}
+.tp-si{font-size:.41rem;color:#555;font-family:var(--sans);padding:1.5px 0;display:flex;align-items:center;gap:3px;border-bottom:1px solid rgba(0,0,0,.06)}
+.tp-si::before{content:'›';color:var(--gold);font-size:.55rem}
+
+.m-infographic{width:100%;height:100%;background:linear-gradient(160deg,#060E1C 0%,#0A1828 100%);padding:16px;display:flex;flex-direction:column;gap:8px}
+.ig-ttl{font-family:var(--serif);font-size:.9rem;color:var(--cream);font-weight:300;text-align:center}
+.ig-sub{font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:center}
+.ig-body{display:flex;flex-direction:column;gap:0;flex:1;justify-content:space-evenly}
+.ig-row{display:grid;grid-template-columns:32px 1fr;gap:7px;align-items:center}
+.ig-circle{width:26px;height:26px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.82rem;color:var(--gold);flex-shrink:0}
+.ig-rt{font-size:.56rem;font-weight:500;color:var(--cream);font-family:var(--sans);margin-bottom:1px}
+.ig-rd{font-size:.43rem;color:var(--muted);font-family:var(--sans);line-height:1.4}
+.ig-track{height:3px;background:rgba(240,234,224,.08);border-radius:2px;margin-top:3px;overflow:hidden}
+.ig-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+
+/* ── DIGITAL MOCKUPS ──────────────────────────────────────────── */
+.m-ppt{width:100%;height:100%;background:#0A1320;display:flex;flex-direction:column;overflow:hidden}
+.ppt-bar{background:#0B2644;padding:7px 14px;display:flex;justify-content:space-between;align-items:center}
+.ppt-bl{font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.ppt-br{font-size:.44rem;color:var(--dim)}
+.ppt-body{padding:12px 16px;display:flex;flex-direction:column;flex:1}
+.ppt-pre{font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.ppt-h{font-family:var(--serif);font-size:1.05rem;color:var(--cream);font-weight:300;margin:.35rem 0 .7rem;line-height:1.2}
+.ppt-rule{height:1px;background:rgba(201,168,76,.2);margin-bottom:.7rem}
+.ppt-bars{display:flex;gap:6px;align-items:flex-end;flex:1;padding-bottom:4px}
+.pb-group{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1}
+.pb-bar{border-radius:1px 1px 0 0;width:100%;background:rgba(201,168,76,.45)}
+.pb-bar.hi{background:linear-gradient(180deg,var(--gold),rgba(201,168,76,.65))}
+.pb-lbl{font-size:.4rem;color:var(--dim);font-family:var(--sans)}
+.ppt-note{font-size:.47rem;color:var(--dim);margin-top:6px;padding-top:5px;border-top:1px solid rgba(240,234,224,.06);font-family:var(--sans)}
+.ppt-note span{color:var(--gold)}
+
+.m-dash{width:100%;height:100%;background:#080E18;display:grid;grid-template-rows:auto auto 1fr;gap:2px;overflow:hidden}
+.d-hdr{background:#0B2644;padding:7px 13px;display:flex;justify-content:space-between;align-items:center}
+.d-hl{font-family:var(--serif);font-size:.82rem;color:var(--cream);font-weight:300}
+.d-hr{display:flex;gap:5px}
+.d-pill{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.28);color:var(--gold);font-size:.4rem;padding:2px 7px;border-radius:10px;font-family:var(--sans);letter-spacing:.06em}
+.d-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#111}
+.d-kpi{background:#0B1726;padding:7px 9px}
+.d-kn{font-family:var(--serif);font-size:1.1rem;color:var(--gold);line-height:1}
+.d-kl{font-size:.4rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;font-family:var(--sans)}
+.d-kc{font-size:.4rem;color:#4CAF88;margin-top:2px;font-family:var(--sans)}
+.d-charts{display:grid;grid-template-columns:2fr 1fr;gap:2px;background:#111}
+.d-cb{background:#0B1726;padding:9px;overflow:hidden}
+.d-cl{font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:5px;font-family:var(--sans)}
+.d-bars{display:flex;gap:5px;align-items:flex-end;height:46px}
+.d-b{border-radius:1px 1px 0 0;flex:1}
+.d-donut-wrap{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.d-donut{width:58px;height:58px;border-radius:50%;background:conic-gradient(var(--gold) 0% 62%,#1B3B62 62% 80%,#0C5A4A 80% 100%);position:relative;display:flex;align-items:center;justify-content:center}
+.d-donut::after{content:'62%';position:absolute;font-family:var(--serif);font-size:.65rem;color:var(--cream)}
+.d-legend{display:flex;flex-direction:column;gap:2px}
+.d-li{display:flex;align-items:center;gap:3px;font-size:.4rem;color:var(--dim);font-family:var(--sans)}
+.d-ld{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+
+.m-linkedin{width:100%;height:100%;background:linear-gradient(130deg,#0B2644 0%,#083852 50%,#0B2644 100%);display:flex;flex-direction:column;justify-content:center;padding:18px 22px;position:relative;overflow:hidden}
+.li-ring{position:absolute;right:-35px;top:50%;transform:translateY(-50%);border:1px solid rgba(201,168,76,.12);border-radius:50%}
+.li-ey{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
+.li-t{font-family:var(--serif);font-size:1.25rem;color:var(--cream);font-weight:300;line-height:1.2;max-width:68%;margin-bottom:.65rem}
+.li-stats{display:flex;gap:14px}
+.li-s{border-left:2px solid var(--gold);padding-left:7px}
+.li-sn{font-family:var(--serif);font-size:.95rem;color:var(--gold)}
+.li-sl{font-size:.4rem;text-transform:uppercase;letter-spacing:.07em;color:var(--dim);font-family:var(--sans)}
+.li-btm{position:absolute;bottom:12px;right:14px;font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,234,224,.25)}
+
+.m-social{width:100%;height:100%;background:#EEE8DC;display:flex;flex-direction:column;overflow:hidden}
+.ss-top{background:#0B2644;flex:0 0 42%;display:flex;flex-direction:column;justify-content:center;padding:14px 16px}
+.ss-ey{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.ss-h{font-family:var(--serif);font-size:1.05rem;color:var(--cream);font-weight:300;line-height:1.2}
+.ss-bot{flex:1;display:flex;gap:7px;padding:12px 16px;align-items:center}
+.ss-big{font-family:var(--serif);font-size:2.3rem;color:#0B2644;font-weight:300;line-height:1;white-space:nowrap}
+.ss-detail{flex:1}
+.ss-lbl{font-size:.52rem;font-weight:500;color:#0B2644;font-family:var(--sans);margin-bottom:.18rem}
+.ss-desc{font-size:.45rem;color:#555;font-family:var(--sans);line-height:1.5}
+.ss-tags{display:flex;gap:3px;margin-top:.3rem;flex-wrap:wrap}
+.ss-tag{background:#0B2644;color:rgba(240,234,224,.75);font-size:.38rem;padding:2px 5px;border-radius:2px;font-family:var(--sans);letter-spacing:.05em}
+
+.m-motion{width:100%;height:100%;background:#050810;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden}
+.mo-ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.1);animation:rot 8s linear infinite}
+.mo-center{position:relative;z-index:2;text-align:center}
+.mo-play{width:44px;height:44px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 9px}
+.mo-play::after{content:'';border-left:13px solid var(--gold);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:4px}
+.mo-lbl{font-family:var(--serif);font-size:.95rem;color:var(--cream);font-weight:300}
+.mo-sub{font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:.25rem}
+.mo-tl{position:absolute;bottom:14px;left:14px;right:14px;display:flex;align-items:center;gap:5px}
+.mo-tl-bar{flex:1;height:2px;background:rgba(240,234,224,.08);border-radius:1px;overflow:hidden}
+.mo-tl-fill{width:38%;height:100%;background:var(--gold)}
+.mo-tl-t{font-size:.42rem;color:var(--dim);font-family:var(--sans)}
+@keyframes rot{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.m-email{width:100%;height:100%;background:#EDEAE4;display:flex;flex-direction:column;overflow:hidden}
+.em-hdr{background:#0B2644;padding:9px 13px;display:flex;justify-content:space-between;align-items:center}
+.em-hl{font-size:.52rem;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;font-family:var(--sans)}
+.em-hn{display:flex;gap:7px}
+.em-hn span{font-size:.4rem;color:var(--dim);font-family:var(--sans)}
+.em-band{background:linear-gradient(90deg,#081C30,#0B2644);padding:12px;display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center}
+.em-bt{font-family:var(--serif);font-size:.88rem;color:var(--cream);font-weight:300;line-height:1.2}
+.em-bc{background:var(--gold);color:var(--ink);font-size:.42rem;font-weight:500;padding:5px 9px;border-radius:2px;font-family:var(--sans);letter-spacing:.06em;white-space:nowrap;align-self:flex-end}
+.em-body{padding:10px 13px;flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.em-card{background:#fff;border-radius:2px;padding:7px;overflow:hidden}
+.em-ct{height:26px;margin:-7px -7px 5px;display:flex;align-items:center;justify-content:center;font-size:.75rem}
+.em-cn{font-size:.48rem;font-weight:500;color:#0B2644;font-family:var(--sans);margin-bottom:2px}
+.em-cd{font-size:.4rem;color:#666;line-height:1.4;font-family:var(--sans)}
+
+/* ══ SKILLS ══════════════════════════════════════════════════════ */
+#skills{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--ink2) 0%,var(--ink) 100%)}
+.skills-grid{display:grid;grid-template-columns:1fr 1.8fr;gap:5vw;margin-top:3rem;align-items:start}
+.skills-intro p{color:var(--muted);font-size:.85rem;line-height:1.95;margin-bottom:1.1rem}
+.ai-callout{border-left:2px solid var(--gold);padding-left:1rem;color:var(--muted);font-size:.8rem;font-style:italic;line-height:1.7}
+.sgroups{display:flex;flex-direction:column;gap:1.5rem}
+.sgroup h4{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.chips{display:flex;flex-wrap:wrap;gap:.38rem}
+.chip{border:1px solid var(--line);color:var(--muted);font-size:.7rem;padding:.32rem .78rem;border-radius:20px;transition:all .22s;cursor:default}
+.chip:hover{border-color:var(--gold);color:var(--cream)}
+.chip.ai{border-color:rgba(201,168,76,.38);color:rgba(240,234,224,.68)}
+
+/* ══ EXPERIENCE ══════════════════════════════════════════════════ */
+#exp{border-top:1px solid var(--line)}
+.exp-list{margin-top:3rem;display:flex;flex-direction:column}
+.ei{display:grid;grid-template-columns:170px 1fr;gap:3rem;padding:2rem 0;border-bottom:1px solid var(--line);position:relative}
+.ei:first-child{border-top:1px solid var(--line)}
+.ei::before{content:'';position:absolute;left:-9vw;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .4s ease}
+.ei:hover::before{transform:scaleY(1)}
+.ei-co{font-family:var(--serif);font-size:1.1rem;color:var(--cream)}
+.ei-per{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:.2rem}
+.ei-role{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.55rem}
+.ei-desc{color:var(--muted);font-size:.82rem;line-height:1.8;margin-bottom:.7rem}
+.ei-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.ei-tag{border:1px solid var(--line);color:var(--dim);font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;padding:.2rem .55rem;border-radius:2px}
+
+/* ══ CONTACT ══════════════════════════════════════════════════════ */
+#contact{border-top:1px solid var(--line);text-align:center;padding:8rem 9vw 5rem;background:linear-gradient(180deg,var(--ink) 0%,#090B14 100%)}
+.c-big{font-family:var(--serif);font-size:clamp(3.5rem,9vw,9rem);font-weight:300;line-height:.92;margin:1rem 0 .5rem}
+.c-big em{color:var(--gold);font-style:italic}
+#contact p{color:var(--muted);max-width:440px;margin:1.5rem auto 2.8rem;font-size:.88rem;line-height:1.85}
+.c-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2.5rem}
+.c-link{color:var(--muted);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:.45rem;transition:color .3s}
+.c-link:hover{color:var(--gold)}
+.c-link::before{content:'→';color:var(--gold)}
+.c-urgency{display:inline-block;border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.06);padding:.5rem 1.3rem;border-radius:2px;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+
+footer{padding:1.6rem 9vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.65rem;color:var(--dim)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+@media(max-width:768px){
+  .about-hero,.skills-grid{grid-template-columns:1fr}
+  .ei{grid-template-columns:1fr}
+  .hero-nums{display:none}
+  nav ul,.nav-avail{display:none}
+  h1.hero-name{font-size:3.8rem}
+  .works-grid{grid-template-columns:1fr}
+  .sticky-cta{bottom:1rem;right:1rem;font-size:.65rem;padding:.6rem 1.1rem}
+}
+</style>
+</head>
+<body>
+
+<a href="mailto:pooja.jain1202@gmail.com" class="sticky-cta">Hire Me — Dubai</a>
+
+<nav>
+  <div class="logo">Pooja Jain</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#exp">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-avail"><div class="avail-dot"></div>Available — Dubai</div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-vline"></div>
+  <div class="htag reveal">Design Manager · Creative Director · Dubai</div>
+  <h1 class="hero-name reveal d1">Pooja<br><em>Jain</em></h1>
+  <p class="hero-role reveal d2">9 Years · Fortune 500 Consulting · Print & Digital · AI-Augmented</p>
+  <div class="hero-firms reveal d2">
+    <span class="hf-label">Trusted by</span>
+    <div class="hf-sep"></div>
+    <span class="hf-name">Alvarez &amp; Marsal</span>
+    <div class="hf-sep"></div>
+    <span class="hf-name">Bain &amp; Company</span>
+    <div class="hf-sep"></div>
+    <span class="hf-name">Macquarie Group</span>
+    <div class="hf-sep"></div>
+    <span class="hf-name">Protiviti</span>
+  </div>
+  <div class="hero-btns reveal d3">
+    <a href="#about" class="btn-gold">Meet Pooja</a>
+    <a href="#work" class="btn-line">View Work</a>
+  </div>
+  <div class="hero-nums reveal d3">
+    <div><div class="hn-num">9+</div><div class="hn-lbl">Years Experience</div></div>
+    <div><div class="hn-num">35%</div><div class="hn-lbl">Client Engagement Uplift</div></div>
+    <div><div class="hn-num">93%</div><div class="hn-lbl">Satisfaction Rate</div></div>
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="stag reveal">About</div>
+  <h2 class="sh reveal">The designer Dubai <em>needs</em></h2>
+
+  <div class="about-hero">
+    <!-- LEFT -->
+    <div class="reveal">
+      <p class="about-statement">I don't just make things look good.<br>I make them <em>perform.</em></p>
+      <div class="about-body">
+        <p>I'm a Design Manager and Creative Strategist with <strong>9+ years at the intersection of design and business impact</strong> — building, leading, and delivering for four of the world's most demanding consulting and financial services environments.</p>
+        <p>From boardroom pitch decks that close deals, to annual reports that define a company's year, to social campaigns and motion graphics — I've done it all. Under pressure. To zero-defect standards. For C-suite audiences who notice everything.</p>
+        <p>At A&M, I built the <strong>entire design function from scratch</strong> — team, process, standards, and a live AI-powered productivity tool that makes the team faster every single day. I'm now bringing that same energy to Dubai.</p>
+        <p>I adapt fast. I deliver from Day 1. And I bring <strong>commercial thinking</strong> to everything I design — because great design is only great if it moves the business forward.</p>
+      </div>
+      <div class="about-avail">Available immediately — Dubai &amp; UAE</div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="reveal d2">
+      <div class="about-right">
+
+        <!-- Metrics -->
+        <div class="about-metrics">
+          <div class="am"><div class="am-n">35%</div><div class="am-l">Client Engagement Uplift</div></div>
+          <div class="am"><div class="am-n">93%</div><div class="am-l">Client Satisfaction</div></div>
+          <div class="am"><div class="am-n">20%</div><div class="am-l">Cost Reduction</div></div>
+          <div class="am"><div class="am-n">7mo</div><div class="am-l">To Promotion at A&M</div></div>
+        </div>
+
+        <!-- 3 Pillars -->
+        <div class="pillars">
+          <div class="pillar">
+            <div class="p-icon">1</div>
+            <div>
+              <div class="p-title">Commercial design thinking</div>
+              <div class="p-desc">Every piece I create is designed with a business outcome in mind — not just aesthetics. Pitch decks that win clients. Reports that build trust. Campaigns that convert.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="p-icon">2</div>
+            <div>
+              <div class="p-title">AI-first workflow leadership</div>
+              <div class="p-desc">Built A&M's live VBA PowerPoint productivity add-in. Now integrating Claude Enterprise API for AI-powered macro capabilities. I don't just use AI tools — I build them.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="p-icon">3</div>
+            <div>
+              <div class="p-title">Zero-defect Fortune 500 delivery</div>
+              <div class="p-desc">9 years at A&M, Bain, Macquarie, and Protiviti — environments where one bad slide costs a client. Eagle Eye Award. Pat on the Back Award. Promoted in 7 months.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Awards -->
+        <div class="awards-strip">
+          <div class="award-badge">
+            <span class="award-star">★</span>
+            <div class="award-text"><strong>Eagle Eye Award — Bain &amp; Company</strong>Zero-defect project delivery across 3+ years</div>
+          </div>
+          <div class="award-badge">
+            <span class="award-star">★</span>
+            <div class="award-text"><strong>Pat on the Back Award — Protiviti</strong>Design innovation, 30% delivery improvement</div>
+          </div>
+          <div class="award-badge">
+            <span class="award-star">★</span>
+            <div class="award-text"><strong>Promoted in 7 Months — Alvarez &amp; Marsal</strong>Fastest in team, outstanding contributions</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORK ──────────────────────────────────────────────────────── -->
+<section id="work">
+  <div class="stag reveal">Selected Work</div>
+  <h2 class="sh reveal">Print &amp; Digital <em>Creatives</em></h2>
+  <p class="work-intro reveal">Every format. Every audience. Every deadline. Here's what I deliver — built for consulting and financial services firms who demand world-class creative output.</p>
+  <div class="filter-bar reveal">
+    <button class="fbtn active" data-filter="all">All Work</button>
+    <button class="fbtn" data-filter="print">Print Creatives</button>
+    <button class="fbtn" data-filter="ppt">Presentations</button>
+    <button class="fbtn" data-filter="digital">Digital</button>
+    <button class="fbtn" data-filter="social">Social &amp; Email</button>
+  </div>
+  <div class="works-grid">
+
+    <div class="wcard reveal" data-cat="print">
+      <div class="wcard-preview">
+        <div class="m-report">
+          <div class="r-yr">2024</div><div class="r-bar"></div>
+          <div class="r-tag">Annual Report</div>
+          <div class="r-title">Strategic Performance<br>&amp; Growth Overview</div>
+          <div class="r-dots">
+            <div><div class="r-dot-n">$2.4B</div><div class="r-dot-l">Revenue</div></div>
+            <div><div class="r-dot-n">35%</div><div class="r-dot-l">Growth</div></div>
+            <div><div class="r-dot-n">18</div><div class="r-dot-l">Markets</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Print Creative</div>
+        <div class="wtitle">Corporate Annual Report</div>
+        <div class="wdesc">Full annual reports for consulting and financial services — covers, infographic spreads, data sections, and executive summaries designed for board-level audiences.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal d1" data-cat="print">
+      <div class="wcard-preview">
+        <div class="m-bifold">
+          <div class="bf-cover">
+            <div class="bf-co-logo"><div class="bf-sq"></div><span class="bf-co-name">Advisory Group</span></div>
+            <div><div class="bf-co-title">Transforming Business Through Strategic Design</div><div class="bf-co-rule"></div><div class="bf-co-sub">Services Overview 2024</div></div>
+            <div class="bf-co-stat"><div class="bf-st-n">93%</div><div class="bf-st-l">Client Retention</div></div>
+          </div>
+          <div class="bf-inside">
+            <div class="bf-i-head">Our Capabilities</div><div class="bf-i-rule"></div>
+            <div class="bf-i-cols">
+              <div><div class="bf-i-ct">Strategy & Advisory</div><div class="bf-i-cb">End-to-end consulting with deep industry expertise across 18 global markets.</div></div>
+              <div><div class="bf-i-ct">Digital Transformation</div><div class="bf-i-cb">AI-led transformation roadmaps driving measurable efficiency and growth.</div></div>
+              <div><div class="bf-i-ct">Operations</div><div class="bf-i-cb">Process redesign programmes delivering 20%+ cost reduction at scale.</div></div>
+              <div><div class="bf-i-ct">People & Culture</div><div class="bf-i-cb">Talent strategy and change management for enterprise organisations.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Print Creative</div>
+        <div class="wtitle">Bifold Brochure &amp; Collateral</div>
+        <div class="wdesc">Bi-fold and tri-fold brochures for services overview, capability statements, and client-facing marketing materials — cover through to print-ready artwork.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal d2" data-cat="print">
+      <div class="wcard-preview">
+        <div class="m-2pager">
+          <div class="tp-hdr"><div><div class="tp-hdr-s">Case Study</div><div class="tp-hdr-t">Digital Transformation Initiative</div></div><div class="tp-hdr-s" style="text-align:right">Confidential</div></div>
+          <div class="tp-content">
+            <div>
+              <div class="tp-sec">Overview</div>
+              <div class="tp-text">A firm-wide transformation engagement for a regional financial services client — measurable performance improvements across all key business units within 8 months.</div>
+              <div class="tp-sec" style="margin-top:5px">Key Outcomes</div>
+              <div class="tp-sg">
+                <div class="tp-sk"><div class="tp-sn">35%</div><div class="tp-sl">Efficiency</div></div>
+                <div class="tp-sk"><div class="tp-sn">$0.2M</div><div class="tp-sl">Revenue</div></div>
+                <div class="tp-sk"><div class="tp-sn">20%</div><div class="tp-sl">Cost Down</div></div>
+                <div class="tp-sk"><div class="tp-sn">93%</div><div class="tp-sl">Satisfaction</div></div>
+              </div>
+            </div>
+            <div>
+              <div class="tp-side">
+                <div class="tp-sh">Deliverables</div>
+                <div class="tp-si">Process redesign framework</div>
+                <div class="tp-si">Technology roadmap</div>
+                <div class="tp-si">Change management plan</div>
+                <div class="tp-si">Performance dashboard</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Print Creative</div>
+        <div class="wtitle">2-Pager &amp; Case Study Sheets</div>
+        <div class="wdesc">Concise, high-impact two-page documents for case studies, project summaries, capability snapshots, and leave-behind materials for executive audiences.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal" data-cat="print">
+      <div class="wcard-preview">
+        <div class="m-infographic">
+          <div class="ig-sub">Process Infographic</div><div class="ig-ttl">Design Impact Framework</div>
+          <div class="ig-body">
+            <div class="ig-row"><div class="ig-circle">1</div><div><div class="ig-rt">Discovery &amp; Brief</div><div class="ig-rd">Stakeholder interviews, brand audit, audience mapping</div><div class="ig-track"><div class="ig-fill" style="width:88%"></div></div></div></div>
+            <div class="ig-row"><div class="ig-circle">2</div><div><div class="ig-rt">Creative Strategy</div><div class="ig-rd">Visual direction, narrative structure, concept development</div><div class="ig-track"><div class="ig-fill" style="width:74%"></div></div></div></div>
+            <div class="ig-row"><div class="ig-circle">3</div><div><div class="ig-rt">Design Execution</div><div class="ig-rd">Asset creation, iteration, stakeholder reviews</div><div class="ig-track"><div class="ig-fill" style="width:84%"></div></div></div></div>
+            <div class="ig-row"><div class="ig-circle">4</div><div><div class="ig-rt">Delivery &amp; Impact</div><div class="ig-rd">Print-ready / digital output, measurable outcomes</div><div class="ig-track"><div class="ig-fill" style="width:95%"></div></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Print Creative</div>
+        <div class="wtitle">Infographics &amp; Data Visualisation</div>
+        <div class="wdesc">Process flows, statistical infographics, data storytelling visuals, and research summaries — translating complex data into clear, compelling print and digital graphics.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal d1" data-cat="ppt digital">
+      <div class="wcard-preview">
+        <div class="m-ppt">
+          <div class="ppt-bar"><span class="ppt-bl">Executive Presentation</span><span class="ppt-br">07 / 24</span></div>
+          <div class="ppt-body">
+            <div class="ppt-pre">Key Findings</div>
+            <div class="ppt-h">Revenue Growth Driven by Design-Led Client Engagement</div>
+            <div class="ppt-rule"></div>
+            <div class="ppt-bars">
+              <div class="pb-group"><div class="pb-bar" style="height:38px"></div><div class="pb-lbl">Q1</div></div>
+              <div class="pb-group"><div class="pb-bar" style="height:50px"></div><div class="pb-lbl">Q2</div></div>
+              <div class="pb-group"><div class="pb-bar" style="height:44px"></div><div class="pb-lbl">Q3</div></div>
+              <div class="pb-group"><div class="pb-bar hi" style="height:64px"></div><div class="pb-lbl">Q4</div></div>
+            </div>
+            <div class="ppt-note">→ Q4 engagement uplift of <span>35%</span> following new visual strategy rollout</div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Digital — Presentations</div>
+        <div class="wtitle">Executive PowerPoint Decks</div>
+        <div class="wdesc">Board-level pitch decks, strategy presentations, and client-facing decks built in PowerPoint — narrative-driven, data-rich slides designed to influence at C-suite level.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal d2" data-cat="ppt digital">
+      <div class="wcard-preview">
+        <div class="m-dash">
+          <div class="d-hdr"><span class="d-hl">Performance Dashboard — Q4 2024</span><div class="d-hr"><span class="d-pill">Live</span><span class="d-pill">Export</span></div></div>
+          <div class="d-kpis">
+            <div class="d-kpi"><div class="d-kn">93%</div><div class="d-kl">Satisfaction</div><div class="d-kc">↑ +4%</div></div>
+            <div class="d-kpi"><div class="d-kn">35%</div><div class="d-kl">Engagement</div><div class="d-kc">↑ +12%</div></div>
+            <div class="d-kpi"><div class="d-kn">20%</div><div class="d-kl">Cost Saved</div><div class="d-kc">↑ +7%</div></div>
+            <div class="d-kpi"><div class="d-kn">$0.2M</div><div class="d-kl">Revenue</div><div class="d-kc">↑ +18%</div></div>
+          </div>
+          <div class="d-charts">
+            <div class="d-cb"><div class="d-cl">Monthly Performance</div><div class="d-bars"><div class="d-b" style="height:36px;background:#1B4474"></div><div class="d-b" style="height:49px;background:#1B4474"></div><div class="d-b" style="height:42px;background:#1B4474"></div><div class="d-b" style="height:58px;background:#C9A84C"></div><div class="d-b" style="height:46px;background:#1B4474"></div><div class="d-b" style="height:52px;background:#1B4474"></div></div></div>
+            <div class="d-cb"><div class="d-cl">Mix</div><div class="d-donut-wrap"><div class="d-donut"></div><div class="d-legend"><div class="d-li"><div class="d-ld" style="background:#C9A84C"></div>Design</div><div class="d-li"><div class="d-ld" style="background:#1B3B62"></div>Strategy</div><div class="d-li"><div class="d-ld" style="background:#0C5A4A"></div>Digital</div></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Digital — Data Visualisation</div>
+        <div class="wtitle">Dashboards &amp; Reporting Visuals</div>
+        <div class="wdesc">KPI dashboards, data visualisation layouts, and reporting slides for internal teams and client-facing reporting — making complex metrics instantly readable.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal" data-cat="social digital">
+      <div class="wcard-preview">
+        <div class="m-linkedin">
+          <div class="li-ring" style="width:170px;height:170px;right:-40px"></div>
+          <div class="li-ring" style="width:110px;height:110px;right:-20px"></div>
+          <div class="li-ey">Thought Leadership</div>
+          <div class="li-t">How Design Drives Revenue in Consulting Firms</div>
+          <div class="li-stats">
+            <div class="li-s"><div class="li-sn">35%</div><div class="li-sl">Engagement</div></div>
+            <div class="li-s"><div class="li-sn">9+</div><div class="li-sl">Years Impact</div></div>
+            <div class="li-s"><div class="li-sn">4</div><div class="li-sl">F500 Firms</div></div>
+          </div>
+          <div class="li-btm">Design Manager · Dubai</div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Social Media — LinkedIn</div>
+        <div class="wtitle">LinkedIn Banners &amp; Thought Leadership</div>
+        <div class="wdesc">LinkedIn profile banners, thought leadership post visuals, and corporate announcement graphics optimised for professional platform engagement.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal d1" data-cat="social digital">
+      <div class="wcard-preview">
+        <div class="m-social">
+          <div class="ss-top"><div class="ss-ey">Design Impact</div><div class="ss-h">Great design doesn't cost — it pays.</div></div>
+          <div class="ss-bot">
+            <div class="ss-big">35%</div>
+            <div class="ss-detail">
+              <div class="ss-lbl">Average client engagement uplift</div>
+              <div class="ss-desc">Delivered across A&M, Macquarie, and Bain through commercially-aligned creative strategy.</div>
+              <div class="ss-tags"><span class="ss-tag">Design</span><span class="ss-tag">Strategy</span><span class="ss-tag">Dubai</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Social Media — Instagram &amp; Digital</div>
+        <div class="wtitle">Social Media &amp; Campaign Banners</div>
+        <div class="wdesc">Branded social media content for Instagram, LinkedIn, and digital channels — stat callouts, campaign banners, awareness posts, and always-on brand content.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal d2" data-cat="digital">
+      <div class="wcard-preview">
+        <div class="m-motion">
+          <div class="mo-ring" style="width:170px;height:170px"></div>
+          <div class="mo-ring" style="width:120px;height:120px;animation-duration:12s;animation-direction:reverse"></div>
+          <div class="mo-ring" style="width:75px;height:75px;animation-duration:6s"></div>
+          <div class="mo-center"><div class="mo-play"></div><div class="mo-lbl">Brand Film &amp; Motion</div><div class="mo-sub">After Effects · Premiere Pro</div></div>
+          <div class="mo-tl"><span class="mo-tl-t">0:00</span><div class="mo-tl-bar"><div class="mo-tl-fill"></div></div><span class="mo-tl-t">2:45</span></div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Digital — Motion &amp; Video</div>
+        <div class="wtitle">Motion Graphics &amp; Brand Films</div>
+        <div class="wdesc">Animated infographics, brand films, client testimonial videos, and motion graphics — produced in After Effects and Premiere Pro for presentations, events, and digital channels.</div>
+      </div>
+    </div>
+
+    <div class="wcard reveal" data-cat="social digital">
+      <div class="wcard-preview">
+        <div class="m-email">
+          <div class="em-hdr"><span class="em-hl">The Design Brief</span><div class="em-hn"><span>Insights</span><span>Work</span><span>Contact</span></div></div>
+          <div class="em-band"><div class="em-bt">AI is changing design. Here's how to lead it, not follow it.</div><div class="em-bc">Read More</div></div>
+          <div class="em-body">
+            <div class="em-card"><div class="em-ct" style="background:#0B2644">📊</div><div class="em-cn">Data Viz Trends</div><div class="em-cd">How consulting firms use dashboards to win clients.</div></div>
+            <div class="em-card"><div class="em-ct" style="background:#083852">🎨</div><div class="em-cn">Brand Consistency</div><div class="em-cd">Why 93% satisfaction starts with brand standards.</div></div>
+            <div class="em-card"><div class="em-ct" style="background:#1A3A2A">⚡</div><div class="em-cn">AI Workflows</div><div class="em-cd">VBA + Claude Enterprise — 20% saved in design time.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="wcard-body">
+        <div class="wcat">Digital — Email &amp; Newsletters</div>
+        <div class="wtitle">Email Newsletters &amp; Digital Comms</div>
+        <div class="wdesc">Corporate newsletters, webinar invitations, and digital communication templates — designed for brand consistency and engagement across all digital touchpoints.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SKILLS ─────────────────────────────────────────────────────── -->
+<section id="skills">
+  <div class="stag reveal">Capabilities</div>
+  <h2 class="sh reveal">Tools of the <em>trade</em></h2>
+  <div class="skills-grid">
+    <div class="reveal">
+      <p class="skills-intro">Full creative stack — concept through print-ready and pixel-perfect digital. Every tool a Dubai design leader needs, plus the AI layer that sets me apart.</p>
+      <p class="ai-callout">I built A&M's design productivity toolbar in VBA — and I'm now integrating Claude Enterprise to add AI capabilities. I don't just use tools. I build them.</p>
+    </div>
+    <div class="sgroups reveal d1">
+      <div class="sgroup"><h4>AI &amp; Productivity Tooling</h4><div class="chips"><span class="chip ai">VBA Add-in (built &amp; live)</span><span class="chip ai">Claude Enterprise API</span><span class="chip ai">Adobe Firefly</span><span class="chip ai">Midjourney</span><span class="chip ai">Prompt Engineering</span></div></div>
+      <div class="sgroup"><h4>Design &amp; Motion</h4><div class="chips"><span class="chip">Photoshop</span><span class="chip">Illustrator</span><span class="chip">InDesign</span><span class="chip">After Effects</span><span class="chip">Premiere Pro</span><span class="chip">Figma</span><span class="chip">Sketch</span><span class="chip">Canva</span><span class="chip">Camtasia</span></div></div>
+      <div class="sgroup"><h4>Presentation &amp; Docs</h4><div class="chips"><span class="chip">PowerPoint (Advanced)</span><span class="chip">Keynote</span><span class="chip">Google Slides</span><span class="chip">Word</span><span class="chip">Excel</span><span class="chip">Visio</span><span class="chip">SharePoint</span></div></div>
+      <div class="sgroup"><h4>Leadership &amp; Strategy</h4><div class="chips"><span class="chip">Creative Direction</span><span class="chip">Team Building</span><span class="chip">Brand Strategy</span><span class="chip">Agile / Scrum</span><span class="chip">Design Thinking</span><span class="chip">Stakeholder Management</span><span class="chip">Multicultural Teams</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ─────────────────────────────────────────────────── -->
+<section id="exp">
+  <div class="stag reveal">Career</div>
+  <h2 class="sh reveal">Where I've <em>delivered</em></h2>
+  <div class="exp-list">
+    <div class="ei reveal">
+      <div><div class="ei-co">Alvarez &amp; Marsal</div><div class="ei-per">Apr 2024 — Present</div></div>
+      <div><div class="ei-role">Design Manager</div><div class="ei-desc">Built the design practice from scratch. Built and deployed a live VBA PowerPoint productivity add-in used daily by the team. Delivered 35% client engagement uplift, 93% satisfaction, $0.2M new revenue, 20% cost saving. Promoted in 7 months.</div><div class="ei-tags"><span class="ei-tag">AI Tooling</span><span class="ei-tag">Team Building</span><span class="ei-tag">Pitch Decks</span><span class="ei-tag">Brand Strategy</span><span class="ei-tag">Video</span></div></div>
+    </div>
+    <div class="ei reveal">
+      <div><div class="ei-co">Macquarie Group</div><div class="ei-per">Jun 2023 — Apr 2024</div></div>
+      <div><div class="ei-role">Asst. Manager — Design</div><div class="ei-desc">Led visual communications for high-profile global projects across multicultural teams. Reduced turnaround by 20%, boosted productivity 25%. Designed for C-suite across global markets. Produced animated graphics and brand films.</div><div class="ei-tags"><span class="ei-tag">Data Viz</span><span class="ei-tag">Motion Graphics</span><span class="ei-tag">C-suite Comms</span><span class="ei-tag">Global Projects</span></div></div>
+    </div>
+    <div class="ei reveal">
+      <div><div class="ei-co">Bain &amp; Company</div><div class="ei-per">Dec 2019 — Jun 2023</div></div>
+      <div><div class="ei-role">Design Coordinator</div><div class="ei-desc">Eagle Eye Award for zero-defect delivery. Contributed to 15% client retention growth. Designed branding, infographics, animations, pitch decks, and social content for diverse global consulting engagements.</div><div class="ei-tags"><span class="ei-tag">Pitch Design</span><span class="ei-tag">Animation</span><span class="ei-tag">Infographics</span><span class="ei-tag">Social Media</span></div></div>
+    </div>
+    <div class="ei reveal">
+      <div><div class="ei-co">Protiviti</div><div class="ei-per">Dec 2016 — Dec 2019</div></div>
+      <div><div class="ei-role">Design Associate</div><div class="ei-desc">Pat on the Back Award for design innovation delivering 30% efficiency improvement. Built client dashboards and materials transforming complex consulting data into visual narratives for senior stakeholders.</div><div class="ei-tags"><span class="ei-tag">Dashboards</span><span class="ei-tag">Brand Design</span><span class="ei-tag">Automation</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="stag reveal" style="justify-content:center">Ready. Right Now.</div>
+  <h2 class="c-big reveal">Let's build<br><em>something great</em></h2>
+  <div class="c-urgency reveal">Available immediately — Dubai &amp; UAE</div>
+  <p class="reveal">9 years. 4 Fortune 500 firms. Every format. Zero-defect delivery. A live AI tool already in production. I'm ready for Dubai — are you ready for me?</p>
+  <div class="reveal"><a href="mailto:pooja.jain1202@gmail.com" class="btn-gold" style="font-size:.8rem;padding:1rem 2.5rem">pooja.jain1202@gmail.com</a></div>
+  <div class="c-links reveal d1">
+    <a href="tel:+917838200299" class="c-link">+91 78382 00299</a>
+    <a href="https://linkedin.com/in/pooja-jain-9b406b109" class="c-link" target="_blank">LinkedIn</a>
+    <a href="#" class="c-link">Dubai — Day 1 Ready</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Pooja Jain · Design Manager &amp; Creative Director</p>
+  <p style="color:var(--gold)">Dubai, UAE · Immediately Available</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.fbtn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    const f=this.dataset.filter;
+    document.querySelectorAll('.wcard').forEach(c=>{
+      c.style.display=(f==='all'||c.dataset.cat.includes(f))?'':'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
